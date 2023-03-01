@@ -1,7 +1,7 @@
-baseURL: /
+baseURL: /https://mandabaka.netlify.app/
 theme: hugo-apero
 languageCode: en
-title: Hugo Apéro
+title: Marijana Andabaka
 author: Alison Hill
 copyright: ''
 googleAnalytics: ''
@@ -86,11 +86,11 @@ taxonomies:
   tag: tags
 menu:
   footer:
-    - name: License
+    - name: Licenca
       title: License
       url: /license/
       weight: 1
-    - name: Contact
+    - name: Kontakt
       title: Contact form
       url: /contact/
       weight: 2
@@ -99,7 +99,7 @@ menu:
       url: /contributors/
       weight: 3
   header:
-    - name: About
+    - name: O meni
       title: About Blogophonic
       url: /about/
       weight: 1
@@ -107,7 +107,7 @@ menu:
       title: Blog
       url: /blog/
       weight: 2
-    - name: Projects
+    - name: Projekti
       title: Project Portfolio
       url: /project/
       weight: 3
