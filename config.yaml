@@ -1,8 +1,8 @@
-baseURL: https://mandabaka.netlify.app/
+baseURL: https://mandabaka.netlify.app
 theme: hugo-apero
 languageCode: en
-title: Marijana Andabaka
-author: Alison Hill
+title: 
+author: Marijana Andabaka
 copyright: ''
 googleAnalytics: ''
 disqusShortname: ''
@@ -31,11 +31,11 @@ markup:
     startLevel: 2
 params:
   custom_theme: ''
-  customheadingFontFamily: Fraunces
-  customtextFontFamily: Commissioner
+  customheadingFontFamily: Baskerville
+  customtextFontFamily: Baskerville
   description: A modern, beautiful, and easily configurable blog theme for Hugo.
   favicon: /img/favicon.ico
-  headingFontFamily: sans-serif
+  headingFontFamily: Baskerville
   logo: /img/blogophonic-mark-dark.png
   mainSections:
     - blog
@@ -44,35 +44,29 @@ params:
   math:
     renderer: katex
   navallcaps: yes
-  orgLocal: Anywhere
-  orgName: RStudio
+  orgLocal: Zagreb, Hrvatska
+  orgName: Marijana Andabaka
   sharing_image: /img/papillons.jpg
   social:
+    - icon: linkedin
+      icon_pack: fab
+      url: https://linkedin.com/in/marijana-andabaka-9a66831a4
+    - icon: google-scholar
+      icon_pack: ai
+      url: https://scholar.google.hr/citations?user=awNSPV8AAAAJ&hl=en
     - icon: github
       icon_pack: fab
-      url: https://github.com/apreshill/apero
+      url: https://github.com/andabaka
     - icon: facebook-square
       icon_pack: fab
-      url: https://www.facebook.com/hashtag/ap%C3%A9ro
-    - icon: instagram
-      icon_pack: fab
-      url: https://www.instagram.com/explore/tags/apero/
+      url: https://www.facebook.com/marijana.zunic/
     - icon: twitter
       icon_pack: fab
-      url: https://twitter.com/hashtag/apéro
-    - icon: impactstory
-      icon_pack: ai
-      url: https://impactstory.org/u/0000-0002-8082-1890
-    - icon: orcid
-      icon_pack: ai
-      url: http://orcid.org/0000-0002-8082-1890
-    - icon: rss
-      icon_pack: fas
-      url: /blog/index.xml
+      url: https://twitter.com/MarijanAndabaka
   socialInFooter: yes
   socialInHeader: no
-  textFontFamily: sans-serif
-  theme: sky
+  textFontFamily: Baskerville
+  theme: forest
   twitter: apreshill
   utterances:
     issue_term: pathname
@@ -94,10 +88,6 @@ menu:
       title: Contact form
       url: /contact/
       weight: 2
-    - name: Contributors
-      title: Contributors
-      url: /contributors/
-      weight: 3
   header:
     - name: O meni
       title: About Blogophonic
