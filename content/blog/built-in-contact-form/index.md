@@ -27,7 +27,7 @@ This theme has a **form-to-email** feature built in, thanks to the simple Formsp
 
 ```toml
 # please replace with a valid Formspree form id or email address
-formspree_form_id: 
+formspree_form_id: https://formspree.io/f/xayzjjpd
 ```
 
 Update that file and you're ready to begin receiving submissions. Just submit
