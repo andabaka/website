@@ -5,6 +5,7 @@ description: This template has a **contact-us** form built right in. All you nee
   you're ready to receive submissions.
 draft: false
 formspree_form_id: https://formspree.io/f/mgebyzpn
+method: POST
 layout: split-right
 name: Contact Us Form
 show_poweredby_formspree: true
