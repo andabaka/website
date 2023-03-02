@@ -6,7 +6,7 @@ description: Sit down, relax, and get to know Hugo Apéro. Built on top of Blogo
   we wanted to create a polished Hugo theme with the right 
 image_left: false
 images:
-- img/revoir.jpg
+- img/image.jpg
 show_action_link: true
 show_social_links: true
 subtitle: Podatkovna znanost, programiranje u R-u, poslovno savjetovanje
