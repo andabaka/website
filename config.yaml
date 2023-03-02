@@ -34,17 +34,16 @@ params:
   customheadingFontFamily: Baskerville
   customtextFontFamily: Baskerville
   description: A modern, beautiful, and easily configurable blog theme for Hugo.
-  favicon: /img/favicon.ico
+  favicon: /img/bar-chart.png
   headingFontFamily: Baskerville
-  logo: /img/blogophonic-mark-dark.png
+  logo: /img/bar-chart.png
   mainSections:
     - blog
     - project
-    - talk
   math:
     renderer: katex
   navallcaps: yes
-  orgLocal: Zagreb, Hrvatska
+  orgLocal: Zagreb
   orgName: Marijana Andabaka
   sharing_image: /img/papillons.jpg
   social:
