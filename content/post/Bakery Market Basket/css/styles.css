@@ -1,0 +1,68 @@
+.header-panel {
+    background-color: #17261e;
+}
+
+.figure p.caption {
+    font-size: 100%;
+}
+
+.header-panel h1 {
+    color: #FFF;
+    font-size: 32px;
+    padding-left: 35px;
+    text-transform: uppercase;
+}
+
+.header-panel h4.author {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.header-panel h4.date {
+    font-size: 14px;
+    margin: 1px 0px;
+    font-style: normal;
+}
+
+.h1, .h2, .h3, .h4, body, h1, h2, h3, h4, h5, h6 {
+    font-family: Baskerville;
+    font-weight: 300;
+}
+
+.pages h1 {
+    color: #17261e;
+}
+
+.menu ul li {
+    font-size: 18px;
+}
+
+.menu ul li a {
+    color: #17261e;
+}
+
+.page {
+    font-size: 17px;
+}
+
+
+body .container-fluid .well p {
+    text-align: justify;
+}
+
+table.dataTable td.dt-right {
+    text-align: left;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: #fff;
+    background-color: #17261e;
+}
+
+a, a:focus, a:hover {
+    color: #17261e;
+}
+
+.pages .page img.image-thumb {
+    max-width: 500px;
+}
