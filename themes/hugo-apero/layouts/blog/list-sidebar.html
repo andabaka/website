@@ -9,8 +9,23 @@
       {{ end }}
     {{ partial "shared/list-pagination.html" . }}
   </section>
+<main>
+    <article>
+    <header>
+        <h1>{{ .Title }}</h1>
+    </header>
+        {{ .Content }}
+    </article>
+
+    {{ if .Params.toc }}
+
+    <aside>
+
+        {{ .TableOfContents }}
+
+    </aside>
+
+    {{ end }}
+
 </main>
-<aside class="page-sidebar" role="complementary">
-  {{ partial "shared/sidebar-scaffold.html" . }}
-</aside>
 {{ end }}
