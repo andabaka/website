@@ -1,1 +1,126 @@
-// Override this file to add your own SCSS styling.
+code, .code {
+    font-family: monospace;
+    font-size: 0.9em
+}
+
+.katex-display>.katex>.katex-html {
+    font-size: medium;
+}
+
+body{
+  font-size: 14pt;
+  text-align: justify;
+}
+
+.f1, .post-body h1, .page-body h1 {
+    font-size: 2rem;
+    
+}
+
+.f2, .post-body h2, .page-body h2 {
+    font-size: 1.7rem;
+}
+
+.f4, .post-body h4, .page-body h4 {
+    font-size: 1.4rem;
+}
+
+
+.f-5-l, .f-subheadline-l {
+    font-size: 3rem;
+}
+
+.fw5-ns {
+    font-weight: bold;
+}
+
+.tr {
+    text-align: center;
+}
+
+.mh4 {
+    margin-left: 10rem;
+    margin-right: 2rem;
+    text-align: left;
+}
+
+.mv0 {
+    width: 400px;
+}
+
+div.datatables {
+    font-size: medium;
+    font-family: Monospace;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+.post-body>.footnotes {
+    font-size: 1rem;
+}
+
+.post-body>.footnotes ol {
+    line-height: 1;
+}
+
+pre code span {
+    color: #414a37;
+}
+
+.dib {
+    margin-left: inherit;
+}
+
+[src="/project/2023-04-03-market-basket/index_files/figure-html/unnamed-chunk-5-1.png"] {
+    max-width: 80%;
+}
+
+[src="/project/2023-04-03-market-basket/index_files/figure-html/unnamed-chunk-6-1.png"] {
+    max-width: 80%;
+}
+
+[src="/project/2023-04-03-market-basket/index_files/figure-html/unnamed-chunk-7-1.png"] {
+    max-width: 80%;
+}
+
+[src="/project/2023-04-03-market-basket/index_files/figure-html/unnamed-chunk-8-1.png"] {
+    max-width: 80%;
+}
+
+/* Customer segmentation */
+
+[src="img/mall.jpg"] {
+    max-width: 40%;
+}
+
+[src="/project/2023-03-02-customer-segmentation/index_files/figure-html/unnamed-chunk-5-1.png"] {
+    max-width: 70%;
+}
+
+[src="/project/2023-03-02-customer-segmentation/index_files/figure-html/unnamed-chunk-5-2.png"] {
+    max-width: 70%;
+}
+
+[src="/project/2023-03-02-customer-segmentation/index_files/figure-html/unnamed-chunk-5-3.png"] {
+    max-width: 70%;
+}
+
+[src="/project/2023-03-02-customer-segmentation/index_files/figure-html/unnamed-chunk-6-1.png"] {
+    max-width: 70%;
+}
+
+[src="/project/2023-03-02-customer-segmentation/index_files/figure-html/unnamed-chunk-6-2.png"] {
+    max-width: 70%;
+}
+
+[src="/project/2023-03-02-customer-segmentation/index_files/figure-html/unnamed-chunk-6-3.png"] {
+    max-width: 70%;
+}
+
+[src="/project/2023-03-02-customer-segmentation/index_files/figure-html/unnamed-chunk-8-1.png"] {
+    max-width: 70%;
+}
+

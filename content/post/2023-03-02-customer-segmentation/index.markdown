@@ -8,3 +8,9 @@ tags: []
 ---
 
 
+```r
+library(ggplot2)
+
+x = seq(-1, 1, .01)
+y = sin(x^3)/(1 + x^6)
+```

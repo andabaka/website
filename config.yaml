@@ -25,14 +25,14 @@ markup:
       unsafe: yes
   highlight:
     style: github
-  tableOfContents:
-    endLevel: 2
-    ordered: no
+  tableOfContents: 
+    endLevel: 3
+    ordered: yes
     startLevel: 2
 params:
   custom_theme: ''
-  customheadingFontFamily: Baskerville
-  customtextFontFamily: Baskerville
+  customheadingFontFamily: 
+  customtextFontFamily: 
   description: A modern, beautiful, and easily configurable blog theme for Hugo.
   favicon: /img/bar-chart.png
   headingFontFamily: Baskerville
@@ -65,7 +65,7 @@ params:
   socialInFooter: yes
   socialInHeader: no
   textFontFamily: Baskerville
-  theme: forest
+  theme: plum
   twitter: apreshill
   utterances:
     issue_term: pathname
@@ -96,7 +96,7 @@ menu:
       title: Blog
       url: /blog/
       weight: 2
-    - name: Projekti
+    - name: Portfolio
       title: Project Portfolio
       url: /project/
       weight: 3
