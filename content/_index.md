@@ -9,7 +9,7 @@ images:
 - img/image.jpg
 show_action_link: true
 show_social_links: true
-subtitle: Podatkovna znanost, programiranje u R-u, poslovno savjetovanje
+subtitle: Podatkovna znanost, programiranje u R-u, poslovno savjetovanje eee
 text_align_left: true
 title: marijana andabaka, PhD
 type: home
