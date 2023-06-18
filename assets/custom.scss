@@ -21,12 +21,18 @@ body{
     font-weight: bold;
 }
 
-.mh4 {
+.flex-l.items-center{
     margin-left: 10rem;
-    margin-right: 2rem;
+    margin-right: 10rem;
     text-align: left;
 }
 
+
+     
+.f4, .post-body h4, .page-body h4 {
+    font-size: 1.25rem;
+    text-align: justify;
+}
 
 div.datatables {
     font-size: medium;
