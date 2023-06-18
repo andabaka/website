@@ -28,19 +28,14 @@ body{
     text-align: left;
 }
 
-.mv0 {
-    width: 400px;
-}
+
 
 div.datatables {
     font-size: medium;
     font-family: Monospace;
 }
 
-img {
-    display: block;
-    margin: auto;
-}
+
 
 .post-body>.footnotes {
     font-size: 1rem;
@@ -61,6 +56,11 @@ pre code span {
 .bg-custom-sidebar-bg-color, .about-sidebar, .home .action.button, .page-sidebar .ad-unit, .page-sidebar {
     background-color: #e8d9db3d;
 }
+
+img.mv0.w-70-m{
+    border-radius: 20%;
+}
+        
 
 [src="/project/2023-04-03-market-basket/index_files/figure-html/unnamed-chunk-5-1.png"] {
     max-width: 80%;
