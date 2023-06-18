@@ -12,19 +12,6 @@ body{
   text-align: justify;
 }
 
-.f1, .post-body h1, .page-body h1 {
-    font-size: 2rem;
-    
-}
-
-.f2, .post-body h2, .page-body h2 {
-    font-size: 1.7rem;
-}
-
-.f4, .post-body h4, .page-body h4 {
-    font-size: 1.4rem;
-}
-
 
 .f-5-l, .f-subheadline-l {
     font-size: 3rem;
@@ -34,9 +21,6 @@ body{
     font-weight: bold;
 }
 
-.tr {
-    text-align: center;
-}
 
 .mh4 {
     margin-left: 10rem;
@@ -72,6 +56,10 @@ pre code span {
 
 .dib {
     margin-left: inherit;
+}
+
+.bg-custom-sidebar-bg-color, .about-sidebar, .home .action.button, .page-sidebar .ad-unit, .page-sidebar {
+    background-color: #e8d9db3d;
 }
 
 [src="/project/2023-04-03-market-basket/index_files/figure-html/unnamed-chunk-5-1.png"] {

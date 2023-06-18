@@ -3,9 +3,9 @@ cascade:
   headless: true
 description: |
   A website template for Hugo developed by RStudio & Formspree and available for free.
-show_header: false
+show_header: true
 sidebar_left: true
-title: About
+title: La vie est trop courte pour boire du mauvais vin. 
 ---
 
 ** index doesn't contain a body, just front matter above.

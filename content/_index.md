@@ -1,15 +1,14 @@
 ---
-action_label: Više &rarr;
+action_label: O meni &rarr;
 action_link: /about
 action_type: text
-description: Sit down, relax, and get to know Hugo Apéro. Built on top of Blogophonic,
-  we wanted to create a polished Hugo theme with the right 
+description: Ja sam data scientist, doktorica šumarskih znanosti i autor. Moja strast su podaci i R-programski jezik. Zašto volim biti data scientist? Zato jer me proces stvaranja nečega iz naizgled ničega svaki put oduševi. Na tom putu uživam primjenjivati machine learning i time series forecasting te sve upakirati u finalni data product - web aplikaciju.    
 image_left: false
 images:
 - img/image.jpg
 show_action_link: true
 show_social_links: true
-subtitle: Podatkovna znanost, programiranje u R-u, poslovno savjetovanje eee
+subtitle: data scientist, shiny app developer
 text_align_left: true
 title: marijana andabaka, PhD
 type: home

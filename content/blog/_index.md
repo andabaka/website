@@ -9,7 +9,7 @@ cascade:
     show_sidebar_adunit: true
     text_link_label: View recent posts
     text_link_url: /blog/
-description: "Strojno učenje, Shiny web aplikacije i puno više"
+description: ""
 layout: list
 show_author_byline: true
 show_button_links: false
@@ -25,7 +25,7 @@ sidebar:
   text_link_url: /index.xml
   title: A Sidebar for Your Thoughts
 thumbnail_left: true
-title: R Blog
+title: BLOG
 
 ---
 

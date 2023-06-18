@@ -35,7 +35,7 @@ params:
   customtextFontFamily: 
   description: A modern, beautiful, and easily configurable blog theme for Hugo.
   favicon: /img/bar-chart.png
-  headingFontFamily: Baskerville
+  headingFontFamily: Fraunces
   logo: /img/bar-chart.png
   mainSections:
     - blog
@@ -64,7 +64,7 @@ params:
       url: https://twitter.com/MarijanAndabaka
   socialInFooter: yes
   socialInHeader: no
-  textFontFamily: Baskerville
+  textFontFamily: Commissioner
   theme: plum
   twitter: apreshill
   utterances:
