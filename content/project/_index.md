@@ -8,7 +8,7 @@ cascade:
     show_sidebar_adunit: true
     text_link_label: View all projects
     text_link_url: /project/
-description: 
+description: Data science products - shiny web apps
 layout: list
 show_author_byline: true
 show_button_links: false
