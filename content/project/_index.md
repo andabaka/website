@@ -22,6 +22,7 @@ sidebar:
   text_link_label: ""
   text_link_url: ""
   title: A Sidebar for Your Projects
+thumbnail_left: true
 title: PORTFOLIO
 
 ---

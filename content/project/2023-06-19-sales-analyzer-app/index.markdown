@@ -1,0 +1,17 @@
+---
+title: Analyzer App - Prodaja
+author: Marijana Andabaka
+date: '2023-06-19'
+slug: []
+categories: []
+tags: []
+---
+
+{{< rawhtml >}} 
+
+<video width=100% controls autoplay>
+    <source src="/videos/sales_analyzer.mov" controls="controls">
+     
+</video>
+
+{{< /rawhtml >}}
