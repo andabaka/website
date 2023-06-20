@@ -5,7 +5,7 @@ date: '2023-03-02'
 slug: []
 categories: []
 tags: []
-excerpt: "Segmentacija kupaca trgovačkog centra"
+excerpt: "Segmentiranje kupaca pomoću klaster analize, k-means algoritma i vizualizacija klastera sa UMAP algoritmom "
 ---
 
 
@@ -22,23 +22,25 @@ knitr::opts_chunk$set(
 knitr::include_graphics("img/mall.jpg")
 ```
 
-# UVOD
+## UVOD
 
-Segmentacija kupaca je proces podjele kupaca u segmente (grupe). Podjela može biti prema bihevioralnim, demografskim, zemljopisnim i drugim karakteristikama. Segmenti bi trebali biti relativno homogeni unutar sebe i heterogeni u odnosu na druge. Glavni cilj pristupa je pronaći bazu visoko profitabilnih i niskoprofitabilnih kupaca te različitim marketinškim strategijama ciljati svaku skupinu kako bi se izvukla maksimalna vrijednost^[https://www.researchgate.net/publication/356756320_Customer_Segmentation_Using_Machine_Learning].
+Segmentacija je proces podjele u segmente (grupe). Podjela može biti prema bihevioralnim, demografskim, zemljopisnim i drugim karakteristikama. Segmenti bi trebali biti relativno homogeni unutar sebe i heterogeni u odnosu na druge. Glavni cilj pristupa je pronaći bazu visoko profitabilnih i niskoprofitabilnih kupaca/klijenata te različitim marketinškim strategijama ciljati svaku skupinu kako bi se izvukla maksimalna vrijednost^[https://www.researchgate.net/publication/356756320_Customer_Segmentation_Using_Machine_Learning].
 
 Prednosti primjene segmentacije kupaca u poslovanju su: učinkovitije marketinške strategije, predviđanje ponašanja kupaca, poboljšanje lojalnosti i zadržavanje kupaca, uspješan razvoj proizvoda, optimizacija cijena. 
 
-Za segmentaciju kupaca korištena je klaster analiza te je primijenjen algoritam *k*-sredina (engl. *k-means*). Ovo je jedan od najčešće korištenih algoritama nenadziranog (engl. *unsupervised*) strojnog učenja (engl. *machine learning*).  
+Za segmentaciju je korištena klaster analiza te je primijenjen algoritam *k*-sredina (engl. *k-means*). Ovo je jedan od najčešće korištenih algoritama nenadziranog (engl. *unsupervised*) strojnog učenja (engl. *machine learning*).  
 
-Algoritam klasificira skup podataka u *k* grupe (klastere) gdje *k* predstavlja broj grupa koji se unaprijed određuje od strane analitičara. Svaki klaster je predstavljen svojim centrom (centroidom) koje odgovara sredini točaka dodijeljenih klasteru^[https://www.youtube.com/watch?v=4b5d3muPQmA].
+Algoritam klasificira skup podataka u *k* grupe (klastere) gdje *k* predstavlja broj grupa koji se unaprijed određuje. Svaki klaster je predstavljen svojim centrom (centroidom) koje odgovara sredini točaka dodijeljenih klasteru^[https://www.youtube.com/watch?v=4b5d3muPQmA].
 
-Za vizulizaciju konačnih rezultata segmentacije kupaca koristit će se algoritam UMAP (engl. *Uniform Manifold Approximation and Projection*). UMAP omugućuje smanjenje dimenzije skupa podataka te prikaz nižedimenzionalnih podataka iz viših dimenzija^[https://www.youtube.com/watch?v=eN0wFzBA4Sc]. Proces provedbe projekta temelji se na CRISP-DM metodologiji (engl. *CRoss Industry Standard Process for Data Mining*)^[https://www.ibm.com/docs/it/spss-modeler/saas?topic=dm-crisp-help-overview]. 
+Za vizulizaciju konačnih rezultata segmentacije kupaca koristit će se algoritam UMAP (engl. *Uniform Manifold Approximation and Projection*). UMAP omugućuje prikaz višedimenzionalnih podataka unutar dvije dimenzije^[https://www.youtube.com/watch?v=eN0wFzBA4Sc]. 
 
-# ANALIZA
+Proces provedbe projekta temelji se na CRISP-DM metodologiji (engl. *CRoss Industry Standard Process for Data Mining*)^[https://www.ibm.com/docs/it/spss-modeler/saas?topic=dm-crisp-help-overview]. 
+
+## ANALIZA
 
 U ovom projektu cilj je segmentirati kupce koji su izvršili kupovinu u trgovačkom centru u klastere (grupe) na temelju podataka o spolu, dobi, godišnjim prihodima i potrošačkom kodu. Pojedinu grupu će u konačnici predstavljati kupci sličnih osobina kojima se onda ciljano pristupa.
 
-## Učitavanje paketa
+### Učitavanje paketa
 
 Za provedbu projekta učitani su potrebni paketi.
 
@@ -52,7 +54,7 @@ library(plotly)
 library(DT)
 ```
 
-## Baza podataka
+### Baza podataka
 
 Baza podataka trgovačkog centra sadrži osnovne informacije o kupcima kao što su ID Kupca, Dob, Godišnji prihodi (1000$) i Potrošački kod (1-100). Potrošački kod (engl. *Spending Score*) se dodjeljuje svakom kupcu na temelju određenih parametara kao što npr. podaci o potrošnji. Baza se sastoji od 200 individulanih jedinica upisa (redaka)^[https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python].
 
@@ -154,7 +156,7 @@ mall_customers_tbl %>%
 
 Box-plot dijagrami pokazuju da kupci muškog spola uglavnom imaju 37 godina, godišnje prihode od 64.000$ i potrošački kod 50. Kupci ženskog spola uglavnom imaju 35 godina, godišnje prihode od 60.000$ i potrošački kod 50. Većina muških kupaca ima između 27 i 51 godinu, godišnje prihode između 46.000$ i 78.000$ te potrošački kod 25 - 73. Većina ženskih kupaca ima između 29 i 48 godina, godišnje prihode između 40.000 i 76.000 te potrošački kod 40 - 74.
 
-## Priprema podataka 
+### Priprema podataka 
 
 Prije primjene k-means algoritma provest ćemo normalizaciju podataka pomoću funkcije `scale()` kako bi se izbjeglo davanje veće težine varijablama s većim vrijednostima. 
 
@@ -165,9 +167,9 @@ mall_customers_tbl_scl<-mall_customers_tbl %>%
     scale()
 ```
 
-## Modeliranje
+### Modeliranje
 
-### Primjena K-means algoritma
+#### Primjena K-means algoritma
 
 Za određivanje optimalnog broja klastera postoje različite metode. Ovdje je korišten jedan vrlo jednostavan pristup. Prvo je primjenjeno klasteriranja *k* -sredinama koristeći različite brojeve *k* klastera. Zatim je na temelju grafa (engl. *Scree Plot*), koji prikazuje zbroj kvadrata unutar klastera (engl. *within cluster sum of squares* (WCSS)) i određeni broj klastera, donešena odluka o broju klastera. WCSS predstavlja kvadrat prosječne udaljenosti svih točaka unutar klastera do središta klastera. Kriterij za donošenje odluke o odgovarajućem broju *k* klastera smatra se položaj koljena na Scree Plot grafu (lokacija savijanja). 
 
@@ -281,14 +283,15 @@ datatable(kmeans_6_clusters, caption = htmltools::tags$caption(
 ```
 
 
-# EVALUACIJA 
+## EVALUACIJA 
  
-Uvid u klastere kupaca i njihovo bolje razumijevanje omogućuje organizaciji da donosi bolje i informirane odluke. Navedeno se odnosi na spoznaje o postojanju grupe kupaca koji imaju visoke godišnje prihode ali nisku ocjenu potrošnje. Strateški i ciljani marketinški pristup mogao bi podići njihov interes što bi moglo rezultirati većom potrošnjom. Također, uz istovremeno se održavanje zadovoljstva "lojalnih kupaca" jer su ono najveći generator prihoda.
+Uvid u klastere kupaca i njihovo bolje razumijevanje omogućuje organizaciji da donosi bolje i informirane odluke. Navedeno se odnosi na spoznaje o postojanju grupe kupaca koji imaju visoke godišnje prihode ali nisku ocjenu potrošnje. Strateški i ciljani marketinški pristup mogao bi podići njihov interes što bi moglo rezultirati većom potrošnjom. Također, istovremeno je potrebno održavati zadovoljstva "lojalnih kupaca" jer su ono najveći generator prihoda.
 
 
-# IMPLEMENTACIJA 
+## IMPLEMENTACIJA 
 
-Provedena segmentacija kupaca implementirana je unutar `Shiny` web aplikacije koja omogućuje interaktivnu vizualizaciju i interpretaciju rezultata (Slika 1). Aplikaciji se može pristupiti klikom na link u nastavku: 
+Provedena segmentacija kupaca implementirana je unutar `Shiny` web aplikacije koja omogućuje interaktivnu vizualizaciju i interpretaciju rezultata (Slika 1). 
+Pokreni aplikaciju
 
 
 
