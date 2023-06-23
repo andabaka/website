@@ -4,7 +4,7 @@ cascade:
 description: |
   A website template for Hugo developed by RStudio & Formspree and available for free.
 show_header: true
-sidebar_left: true
+sidebar_left: false
 title: La vie est trop courte pour boire du mauvais vin. 
 ---
 
