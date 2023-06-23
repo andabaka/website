@@ -23,11 +23,11 @@ knitr::include_graphics("img/img1.jpg")
 ```
 
 
-# UVOD  
+## UVOD  
 
 Veliki kao i mali poduzetnici uvijek traže načine za povećanje svoje dobiti. Kako bi to učinili mnogi koriste tehniku koja se zove analiza potrošačke košarice. 
 
-Analiza potrošačke košarice (engl. __*Market Basket Analysis*__, *Affinity Analysis*) je proces razumijevanja obrasca ponašanja kupaca pri kupnji i povezanosti između različitih artikala. Cilj je pronaći artikle koji se pojavljuju zajedno u transakcijama što omogućuje primjenu ciljnih strategija poput raspodjele artikala unutar trgovina, davanje popusta na artikle koji se često prodaju zajedno te kreiranja preporuka proizvoda s ciljem privlačenja kupaca i navođenja na neplaniranu potrošnju. Postoji nekoliko metoda analize potrošačke košarice^[https://university.business-science.io/courses/]:
+Analiza potrošačke košarice (engl. __*Market Basket Analysis*__, *Affinity Analysis*) je proces razumijevanja obrasca ponašanja kupaca pri kupnji i povezanosti između različitih artikala. Cilj je pronaći artikle koji se pojavljuju zajedno u transakcijama što omogućuje primjenu ciljnih strategija poput raspodjele artikala unutar trgovina, davanje popusta na artikle koji se često prodaju zajedno te kreiranja preporuka proizvoda s ciljem privlačenja kupaca i povećanja potrošnje. Postoji nekoliko metoda analize potrošačke košarice^[https://university.business-science.io/courses/]:
 
 - __Kolaborativno filtriranje__ (engl. *Collaborative Filtering*)
 - __Pravila pridruživanja__ (engl. *Association Rules*)
@@ -47,11 +47,11 @@ Nešto više o metodama koje ćemo koristiti u ovom projektu:
 3. Strategija primjene metode __popularni artikli__ je vrlo jednostavna. Artikli se razvrstavaju na temelju učestalosti kupnje (tj. popularnosti) u svrhu razumijevanja potrošačkih navika. Sustav preporuka se temelji samo na najčešće kupljenim artiklima koji se trenutno ne kupuju. Loše strana ovog pristupa je njegova jednostavnost i nedostatak nekih temeljnih sličnosti unutar segmenata ili skupina kupaca. 
 
 
-# ANALIZA
+## ANALIZA
 
 U ovom projektu napravit ćemo nekoliko modela pomoću kolaborativnog filtriranja, pravila pridruživanja i popularnosti artikala unutar `recommenderlab` paketa.^[https://cran.r-project.org/web/packages/recommenderlab/recommenderlab.pdf] `recommenderlab` paket omogućuje procjenu i usporedbu različitih algoritama te brzu procjenu modela sa najboljim performansama.
 
-## Učitavanje paketa
+### Učitavanje paketa
 
 Za provedbu projekta učitani su potrebni paketi: `recommenderlab`, `tidyverse`, `tidyquant`, `knitr`, `glue`, `DT`
 
@@ -64,7 +64,7 @@ library(glue)
 library(DT) 
 ```
 
-## Baza podataka
+### Baza podataka
 
 Podaci pripadaju pekarnici __The Bread Basket__^[https://www.kaggle.com/datasets/mittalvasu95/the-bread-basket] koja se nalazi u Edinburghu te sadrži online transakcije kupaca u vremenskom periodu od 26.01.2011. do 27.12.2013. Baza ima 20.507 unosa, preko 90.000 transakcija i 5 stupaca (obilježja).
 
@@ -180,7 +180,7 @@ data_bakery_tbl %>%
 
 Najveći broj narudžbi ostvaruje se poslijepodne i ujutro vikendima, najviše subotom između 10.00 i 14.00 sati.
 
-## Priprema podataka (*Data Preparation*)
+### Priprema podataka (*Data Preparation*)
 
 Podatke ćemo formatirati u 2x2 matricu u kojoj se narudžbe nalaze u redovima, a proizvodi u stupcima. Ovaj format se naziva *user-item* matrica zato jer se korisnici (kupci ili narudžbe) nalaze u redovima, a stavke (proizvodi) u stupcima. Zatim matricu pretvaramo u "matricu ocjena" (engl. *binaryRatingMatrix*). Ovaj tip matrice potreban je za analizu,  a normalizacija podataka nije potrebna je binarna matrica ocjena označava da li je ili nije proizvod kupljen sa 1 i 0.
 
@@ -387,12 +387,9 @@ as(prediction, "list")
 Predikcija generira rezultat preporučenih 5 proizvoda, a to su: kava, čaj, kolač, pecivo i sendvić.
 
 
-# EVALUACIJA (*Evaluation*)
+## EVALUACIJA (*Evaluation*)
  
 Evidentno je da uz minimalne troškove revidiranja poslovnih strategija istovremeno postoji potencijal za povećanje prodaje i usluge. Kupci bi mogli dobiti bolju uslugu jer bi opcije kupnje bile prilagođene njihovim potrebama.
 
 
-# IMPLEMENTACIJA (*Deployment*)
-
-U konačnici model bi trebao biti implementiran u stvarnome svijetu da bi bio upotrebljiv i koristan. Implementacija je provedena putem `Shiny` web aplikacije koja ima korisničko sučelje (Slika 2.) te joj se može pristupiti klikom na link u nastavku: 
 

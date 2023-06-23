@@ -21,11 +21,11 @@ excerpt: "Analiza potrošačke košarice na primjeru izvršenih online transakci
 
 <img src="img/img1.jpg" width="2880" />
 
-# UVOD
+## UVOD
 
 Veliki kao i mali poduzetnici uvijek traže načine za povećanje svoje dobiti. Kako bi to učinili mnogi koriste tehniku koja se zove analiza potrošačke košarice.
 
-Analiza potrošačke košarice (engl. ***Market Basket Analysis***, *Affinity Analysis*) je proces razumijevanja obrasca ponašanja kupaca pri kupnji i povezanosti između različitih artikala. Cilj je pronaći artikle koji se pojavljuju zajedno u transakcijama što omogućuje primjenu ciljnih strategija poput raspodjele artikala unutar trgovina, davanje popusta na artikle koji se često prodaju zajedno te kreiranja preporuka proizvoda s ciljem privlačenja kupaca i navođenja na neplaniranu potrošnju. Postoji nekoliko metoda analize potrošačke košarice[^1]:
+Analiza potrošačke košarice (engl. ***Market Basket Analysis***, *Affinity Analysis*) je proces razumijevanja obrasca ponašanja kupaca pri kupnji i povezanosti između različitih artikala. Cilj je pronaći artikle koji se pojavljuju zajedno u transakcijama što omogućuje primjenu ciljnih strategija poput raspodjele artikala unutar trgovina, davanje popusta na artikle koji se često prodaju zajedno te kreiranja preporuka proizvoda s ciljem privlačenja kupaca i povećanja potrošnje. Postoji nekoliko metoda analize potrošačke košarice[^1]:
 
 - **Kolaborativno filtriranje** (engl. *Collaborative Filtering*)
 - **Pravila pridruživanja** (engl. *Association Rules*)
@@ -45,11 +45,11 @@ Nešto više o metodama koje ćemo koristiti u ovom projektu:
 
 3.  Strategija primjene metode **popularni artikli** je vrlo jednostavna. Artikli se razvrstavaju na temelju učestalosti kupnje (tj. popularnosti) u svrhu razumijevanja potrošačkih navika. Sustav preporuka se temelji samo na najčešće kupljenim artiklima koji se trenutno ne kupuju. Loše strana ovog pristupa je njegova jednostavnost i nedostatak nekih temeljnih sličnosti unutar segmenata ili skupina kupaca.
 
-# ANALIZA
+## ANALIZA
 
 U ovom projektu napravit ćemo nekoliko modela pomoću kolaborativnog filtriranja, pravila pridruživanja i popularnosti artikala unutar `recommenderlab` paketa.[^2] `recommenderlab` paket omogućuje procjenu i usporedbu različitih algoritama te brzu procjenu modela sa najboljim performansama.
 
-## Učitavanje paketa
+### Učitavanje paketa
 
 Za provedbu projekta učitani su potrebni paketi: `recommenderlab`, `tidyverse`, `tidyquant`, `knitr`, `glue`, `DT`
 
@@ -62,7 +62,7 @@ library(glue)
 library(DT) 
 ```
 
-## Baza podataka
+### Baza podataka
 
 Podaci pripadaju pekarnici **The Bread Basket**[^3] koja se nalazi u Edinburghu te sadrži online transakcije kupaca u vremenskom periodu od 26.01.2011. do 27.12.2013. Baza ima 20.507 unosa, preko 90.000 transakcija i 5 stupaca (obilježja).
 
@@ -199,7 +199,7 @@ data_bakery_tbl %>%
 
 Najveći broj narudžbi ostvaruje se poslijepodne i ujutro vikendima, najviše subotom između 10.00 i 14.00 sati.
 
-## Priprema podataka (*Data Preparation*)
+### Priprema podataka (*Data Preparation*)
 
 Podatke ćemo formatirati u 2x2 matricu u kojoj se narudžbe nalaze u redovima, a proizvodi u stupcima. Ovaj format se naziva *user-item* matrica zato jer se korisnici (kupci ili narudžbe) nalaze u redovima, a stavke (proizvodi) u stupcima. Zatim matricu pretvaramo u “matricu ocjena” (engl. *binaryRatingMatrix*). Ovaj tip matrice potreban je za analizu, a normalizacija podataka nije potrebna je binarna matrica ocjena označava da li je ili nije proizvod kupljen sa 1 i 0.
 
@@ -289,35 +289,35 @@ results <- recommenderlab::evaluate(
 ```
 
     ## RANDOM run fold/sample [model time/prediction time]
-    ## 	 1  [0.006sec/0.149sec] 
-    ## 	 2  [0.001sec/0.142sec] 
-    ## 	 3  [0sec/0.122sec] 
-    ## 	 4  [0sec/0.12sec] 
-    ## 	 5  [0sec/0.115sec] 
+    ## 	 1  [0.01sec/0.168sec] 
+    ## 	 2  [0.001sec/0.147sec] 
+    ## 	 3  [0sec/0.114sec] 
+    ## 	 4  [0.001sec/0.141sec] 
+    ## 	 5  [0sec/0.137sec] 
     ## POPULAR run fold/sample [model time/prediction time]
-    ## 	 1  [0.003sec/0.277sec] 
-    ## 	 2  [0.002sec/0.213sec] 
-    ## 	 3  [0.002sec/0.22sec] 
-    ## 	 4  [0.003sec/0.216sec] 
-    ## 	 5  [0.002sec/0.228sec] 
+    ## 	 1  [0.002sec/0.26sec] 
+    ## 	 2  [0.002sec/0.221sec] 
+    ## 	 3  [0.001sec/0.246sec] 
+    ## 	 4  [0.001sec/0.242sec] 
+    ## 	 5  [0.001sec/0.239sec] 
     ## UBCF run fold/sample [model time/prediction time]
-    ## 	 1  [0.001sec/4.767sec] 
-    ## 	 2  [0.001sec/4.795sec] 
-    ## 	 3  [0sec/4.893sec] 
-    ## 	 4  [0.001sec/7.887sec] 
-    ## 	 5  [0.001sec/8.377sec] 
+    ## 	 1  [0.001sec/5.385sec] 
+    ## 	 2  [0.001sec/5.95sec] 
+    ## 	 3  [0.001sec/6.022sec] 
+    ## 	 4  [0.001sec/4.999sec] 
+    ## 	 5  [0.001sec/5.105sec] 
     ## IBCF run fold/sample [model time/prediction time]
-    ## 	 1  [0.138sec/0.122sec] 
-    ## 	 2  [0.162sec/0.129sec] 
-    ## 	 3  [0.151sec/0.146sec] 
-    ## 	 4  [0.149sec/0.127sec] 
-    ## 	 5  [0.15sec/0.13sec] 
+    ## 	 1  [0.092sec/0.088sec] 
+    ## 	 2  [0.094sec/0.077sec] 
+    ## 	 3  [0.108sec/0.085sec] 
+    ## 	 4  [0.092sec/0.079sec] 
+    ## 	 5  [0.094sec/0.098sec] 
     ## AR run fold/sample [model time/prediction time]
-    ## 	 1  [0.061sec/16.379sec] 
-    ## 	 2  [0.024sec/11.065sec] 
-    ## 	 3  [0.015sec/10.792sec] 
-    ## 	 4  [0.014sec/11.106sec] 
-    ## 	 5  [0.015sec/10.996sec]
+    ## 	 1  [0.045sec/9sec] 
+    ## 	 2  [0.02sec/8.946sec] 
+    ## 	 3  [0.023sec/9.106sec] 
+    ## 	 4  [0.015sec/8.631sec] 
+    ## 	 5  [0.011sec/8.911sec]
 
 #### Procjena modela
 
@@ -354,17 +354,17 @@ as.data.frame(Reduce("+", cf_matrix_model) / length(cf_matrix_model)) %>%
   select("n", "precision", "recall", "TPR", "FPR")
 ```
 
-    ##     n  precision     recall        TPR        FPR
-    ## 1   1 0.01067873 0.01067873 0.01067873 0.01083794
-    ## 2   2 0.01022624 0.02045249 0.02045249 0.02168633
-    ## 3   3 0.01031674 0.03095023 0.03095023 0.03252641
-    ## 4   4 0.01081448 0.04325792 0.04325792 0.04334681
-    ## 5   5 0.01057014 0.05285068 0.05285068 0.05419704
-    ## 6   6 0.01049774 0.06298643 0.06298643 0.06504087
-    ## 7   7 0.01031674 0.07221719 0.07221719 0.07589506
-    ## 8   8 0.01074661 0.08597285 0.08597285 0.08669973
-    ## 9   9 0.01063851 0.09574661 0.09574661 0.09754819
-    ## 10 10 0.01066063 0.10660633 0.10660633 0.10838443
+    ##     n   precision      recall         TPR        FPR
+    ## 1   1 0.007782805 0.007782805 0.007782805 0.01087005
+    ## 2   2 0.009954751 0.019909502 0.019909502 0.02169269
+    ## 3   3 0.010678733 0.032036199 0.032036199 0.03251502
+    ## 4   4 0.010723982 0.042895928 0.042895928 0.04335121
+    ## 5   5 0.010570136 0.052850679 0.052850679 0.05419762
+    ## 6   6 0.010437406 0.062624434 0.062624434 0.06504576
+    ## 7   7 0.010627020 0.074389140 0.074389140 0.07587207
+    ## 8   8 0.010339367 0.082714932 0.082714932 0.08673594
+    ## 9   9 0.010216189 0.091945701 0.091945701 0.09758953
+    ## 10 10 0.010226244 0.102262443 0.102262443 0.10843151
 
 Prethodne korake pretvorit ćemo u funkciju i primijenit ju na sve elemente u listi. Zatim koristimo funkciju `map()` za iteraciju funkcije kroz sve modele te `enframe()` i `unnest()` za dobivanje rezultata u jednoj razini kako bismo mogli usporediti modele.
 
@@ -388,18 +388,18 @@ results_tbl
 ```
 
     ## # A tibble: 50 × 6
-    ##    name             n precision recall    TPR    FPR
-    ##    <chr>        <dbl>     <dbl>  <dbl>  <dbl>  <dbl>
-    ##  1 random items     1    0.0107 0.0107 0.0107 0.0108
-    ##  2 random items     2    0.0102 0.0205 0.0205 0.0217
-    ##  3 random items     3    0.0103 0.0310 0.0310 0.0325
-    ##  4 random items     4    0.0108 0.0433 0.0433 0.0433
-    ##  5 random items     5    0.0106 0.0529 0.0529 0.0542
-    ##  6 random items     6    0.0105 0.0630 0.0630 0.0650
-    ##  7 random items     7    0.0103 0.0722 0.0722 0.0759
-    ##  8 random items     8    0.0107 0.0860 0.0860 0.0867
-    ##  9 random items     9    0.0106 0.0957 0.0957 0.0975
-    ## 10 random items    10    0.0107 0.107  0.107  0.108 
+    ##    name             n precision  recall     TPR    FPR
+    ##    <chr>        <dbl>     <dbl>   <dbl>   <dbl>  <dbl>
+    ##  1 random items     1   0.00778 0.00778 0.00778 0.0109
+    ##  2 random items     2   0.00995 0.0199  0.0199  0.0217
+    ##  3 random items     3   0.0107  0.0320  0.0320  0.0325
+    ##  4 random items     4   0.0107  0.0429  0.0429  0.0434
+    ##  5 random items     5   0.0106  0.0529  0.0529  0.0542
+    ##  6 random items     6   0.0104  0.0626  0.0626  0.0650
+    ##  7 random items     7   0.0106  0.0744  0.0744  0.0759
+    ##  8 random items     8   0.0103  0.0827  0.0827  0.0867
+    ##  9 random items     9   0.0102  0.0919  0.0919  0.0976
+    ## 10 random items    10   0.0102  0.102   0.102   0.108 
     ## # … with 40 more rows
 
 #### Vizualizacija performansi modela
@@ -502,13 +502,9 @@ as(prediction, "list")
 
 Predikcija generira rezultat preporučenih 5 proizvoda, a to su: kava, čaj, kolač, pecivo i sendvić.
 
-# EVALUACIJA (*Evaluation*)
+## EVALUACIJA (*Evaluation*)
 
 Evidentno je da uz minimalne troškove revidiranja poslovnih strategija istovremeno postoji potencijal za povećanje prodaje i usluge. Kupci bi mogli dobiti bolju uslugu jer bi opcije kupnje bile prilagođene njihovim potrebama.
-
-# IMPLEMENTACIJA (*Deployment*)
-
-U konačnici model bi trebao biti implementiran u stvarnome svijetu da bi bio upotrebljiv i koristan. Implementacija je provedena putem `Shiny` web aplikacije koja ima korisničko sučelje (Slika 2.) te joj se može pristupiti klikom na link u nastavku:
 
 [^1]: https://university.business-science.io/courses/
 

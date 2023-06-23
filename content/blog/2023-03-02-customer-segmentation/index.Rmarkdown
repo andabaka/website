@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r, echo=FALSE}
-knitr::include_graphics("img/mall.jpg")
+knitr::include_graphics("img/umap.jpg")
 ```
 
 ## UVOD
@@ -32,7 +32,7 @@ Za segmentaciju je korištena klaster analiza te je primijenjen algoritam *k*-sr
 
 Algoritam klasificira skup podataka u *k* grupe (klastere) gdje *k* predstavlja broj grupa koji se unaprijed određuje. Svaki klaster je predstavljen svojim centrom (centroidom) koje odgovara sredini točaka dodijeljenih klasteru^[https://www.youtube.com/watch?v=4b5d3muPQmA].
 
-Za vizulizaciju konačnih rezultata segmentacije kupaca koristit će se algoritam UMAP (engl. *Uniform Manifold Approximation and Projection*). UMAP omugućuje prikaz višedimenzionalnih podataka unutar dvije dimenzije^[https://www.youtube.com/watch?v=eN0wFzBA4Sc]. 
+Za vizulizaciju konačnih rezultata segmentacije kupaca koristit će se algoritam UMAP (engl. *Uniform Manifold Approximation and Projection*). UMAP omugućuje prikaz višedimenzionalnih podataka^[https://www.youtube.com/watch?v=eN0wFzBA4Sc]. 
 
 Proces provedbe projekta temelji se na CRISP-DM metodologiji (engl. *CRoss Industry Standard Process for Data Mining*)^[https://www.ibm.com/docs/it/spss-modeler/saas?topic=dm-crisp-help-overview]. 
 
@@ -65,7 +65,7 @@ mall_customers_tbl<-readr::read_csv("Data/Mall_Customers.csv")
 # Pogled na podatke
 mall_customers_tbl %>% glimpse()
 
-# Prijevod i formatiranje varijable spol u faktorski oblik) 
+# Prijevod i formatiranje varijable spol u faktorski oblik 
 mall_customers_tbl <- mall_customers_tbl %>% 
     set_names(c("ID Kupca", "Spol", "Dob", "Godišnji Prihodi(1000$)", 
                 "Potrošački kod(1-100)")) %>% 
@@ -96,7 +96,7 @@ mall_customers_tbl %>%
     summarise_all(~sum(is.na(.)))
 ```
 
-Nakon što smo utvrdili da ne postoje nedostajuće vrijednosti vizualizirat ćemo osnovne činjenice koje se nalaze u podacima. 
+Nakon što smo utvrdili da baza nema nedostajuće vrijednosti vizualizirat ćemo neke osnovne činjenice u podacima. 
 
 ```{r}
 # Distribucija podataka 
@@ -171,9 +171,9 @@ mall_customers_tbl_scl<-mall_customers_tbl %>%
 
 #### Primjena K-means algoritma
 
-Za određivanje optimalnog broja klastera postoje različite metode. Ovdje je korišten jedan vrlo jednostavan pristup. Prvo je primjenjeno klasteriranja *k* -sredinama koristeći različite brojeve *k* klastera. Zatim je na temelju grafa (engl. *Scree Plot*), koji prikazuje zbroj kvadrata unutar klastera (engl. *within cluster sum of squares* (WCSS)) i određeni broj klastera, donešena odluka o broju klastera. WCSS predstavlja kvadrat prosječne udaljenosti svih točaka unutar klastera do središta klastera. Kriterij za donošenje odluke o odgovarajućem broju *k* klastera smatra se položaj koljena na Scree Plot grafu (lokacija savijanja). 
+Za određivanje optimalnog broja klastera postoje različite metode. Ovdje će se koristiti jedan vrlo jednostavan pristup. Prvo će se primijeniti klasteriranje *k* -sredinama koristeći različite brojeve *k* klastera. Zatim se na temelju grafa (engl. *Scree Plot*), koji prikazuje zbroj kvadrata unutar klastera (engl. *within cluster sum of squares* (WCSS)) i određeni broj klastera, donosi odluka o broju klastera. WCSS predstavlja kvadrat prosječne udaljenosti svih točaka unutar klastera do središta klastera. Kriterij za donošenje odluke o odgovarajućem broju *k* klastera smatra se položaj koljena na Scree Plot grafu (lokacija savijanja). 
 
-Nakon što smo standardizirali podatke, primjenit ćemo algoritam k-sredina te izračunati WCSS za različite vrijednosti *k* klastera (1:15) pomoću funkcije koju ćemo izraditi. Zatim ćemo nacrtati graf (Scree Plot), WCSS vrijednosti sa pripadajućim brojevima *k*, te odrediti optimalan broj *k* klastera (položaj koljena). 
+Nakon što smo standardizirali podatke, primjenit ćemo algoritam k-sredina te izračunati WCSS za različite vrijednosti *k* klastera (1:15) pomoću funkcije. Zatim ćemo nacrtati graf (Scree Plot), WCSS vrijednosti sa pripadajućim brojevima *k*, te odrediti optimalan broj *k* klastera (položaj koljena). 
 
 ```{r}
 # Funkcija
@@ -210,7 +210,7 @@ Na Scree Plot-u možemo vidjeti da varijanca unutar klastera opada povećanjem b
 
 ### UMAP vizualizacija
 
-Odabrani optimalni broj k klastera vizulizirati ćemo algoritmom UMAP.
+Odabrani broj *k* klastera vizulizirati ćemo algoritmom UMAP.
 
 
 ```{r}
@@ -222,7 +222,7 @@ custom.config$random_state <- 123
 umap_obj <- mall_customers_tbl_scl %>% 
     umap(config=custom.config)
 
-# Ekstrakcija rezultata, priprema i sredivanje podataka za vizualizaciju
+# Ekstrakcija rezultata, priprema i sređivanje podataka za vizualizaciju
 umap_results_tbl <- umap_obj$layout %>% 
     as_tibble() %>% 
     set_names("x", "y") %>% 
@@ -253,8 +253,7 @@ gg1 <- umap_tbl %>%
      geom_point(aes(text = lable_text)) + 
      theme_tq() +
      scale_color_tq() + 
-     labs(title = "Segmentacija kupaca: 2D Projection",
-          subtitle = "UMAP 2D projekcija with sa k-means klasterima") +
+     labs(title = "Segmentacija kupaca: UMAP 2D Projection") +
      theme(legend.position = "none")
 
 # Interaktivna vizualizacija koristeći ggplotly()
@@ -290,8 +289,9 @@ Uvid u klastere kupaca i njihovo bolje razumijevanje omogućuje organizaciji da 
 
 ## IMPLEMENTACIJA 
 
-Provedena segmentacija kupaca implementirana je unutar `Shiny` web aplikacije koja omogućuje interaktivnu vizualizaciju i interpretaciju rezultata (Slika 1). 
-Pokreni aplikaciju
+Provedena segmentacija kupaca implementirana je unutar `Shiny` web aplikacije koja omogućuje interaktivnu vizualizaciju i interpretaciju rezultata. 
+
+<a href="https://mandabaka.shinyapps.io/customer_app/" target = "_blank">Pokreni aplikaciju</a> 
 
 
 
