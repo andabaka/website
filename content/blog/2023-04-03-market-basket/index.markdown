@@ -19,7 +19,7 @@ excerpt: "Machine learning i sustav preporuka. Collaborative filtering, Associat
 <link href="{{< blogdown/postref >}}index_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/crosstalk/js/crosstalk.min.js"></script>
 
-<img src="img/img1.jpg" width="2880" />
+![](img/recommender_lab.svg)<!-- -->
 
 ## UVOD
 
@@ -287,35 +287,35 @@ results <- recommenderlab::evaluate(
 ```
 
     ## RANDOM run fold/sample [model time/prediction time]
-    ## 	 1  [0.006sec/0.143sec] 
-    ## 	 2  [0sec/0.134sec] 
-    ## 	 3  [0sec/0.104sec] 
-    ## 	 4  [0.001sec/0.116sec] 
-    ## 	 5  [0sec/0.103sec] 
+    ## 	 1  [0.007sec/0.146sec] 
+    ## 	 2  [0sec/0.132sec] 
+    ## 	 3  [0.001sec/0.108sec] 
+    ## 	 4  [0sec/0.12sec] 
+    ## 	 5  [0.001sec/0.103sec] 
     ## POPULAR run fold/sample [model time/prediction time]
-    ## 	 1  [0.002sec/0.217sec] 
-    ## 	 2  [0.001sec/0.196sec] 
-    ## 	 3  [0.002sec/0.215sec] 
-    ## 	 4  [0.001sec/0.193sec] 
-    ## 	 5  [0.001sec/0.21sec] 
+    ## 	 1  [0.002sec/0.221sec] 
+    ## 	 2  [0.002sec/0.209sec] 
+    ## 	 3  [0.001sec/0.214sec] 
+    ## 	 4  [0.002sec/0.21sec] 
+    ## 	 5  [0.001sec/0.209sec] 
     ## UBCF run fold/sample [model time/prediction time]
-    ## 	 1  [0.001sec/4.628sec] 
-    ## 	 2  [0.001sec/4.299sec] 
-    ## 	 3  [0.001sec/4.398sec] 
-    ## 	 4  [0.001sec/4.475sec] 
-    ## 	 5  [0.001sec/4.59sec] 
+    ## 	 1  [0sec/4.877sec] 
+    ## 	 2  [0sec/5.16sec] 
+    ## 	 3  [0.002sec/5.683sec] 
+    ## 	 4  [0.001sec/5.86sec] 
+    ## 	 5  [0.001sec/6.026sec] 
     ## IBCF run fold/sample [model time/prediction time]
-    ## 	 1  [0.094sec/0.076sec] 
-    ## 	 2  [0.099sec/0.082sec] 
-    ## 	 3  [0.089sec/0.073sec] 
-    ## 	 4  [0.094sec/0.071sec] 
-    ## 	 5  [0.096sec/0.073sec] 
+    ## 	 1  [0.125sec/0.093sec] 
+    ## 	 2  [0.112sec/0.088sec] 
+    ## 	 3  [0.112sec/0.099sec] 
+    ## 	 4  [0.132sec/0.124sec] 
+    ## 	 5  [0.117sec/0.096sec] 
     ## AR run fold/sample [model time/prediction time]
-    ## 	 1  [0.03sec/8.982sec] 
-    ## 	 2  [0.021sec/9.052sec] 
-    ## 	 3  [0.012sec/9.786sec] 
-    ## 	 4  [0.017sec/11.05sec] 
-    ## 	 5  [0.013sec/10.431sec]
+    ## 	 1  [0.039sec/12.769sec] 
+    ## 	 2  [0.028sec/11.582sec] 
+    ## 	 3  [0.015sec/11.432sec] 
+    ## 	 4  [0.013sec/10.408sec] 
+    ## 	 5  [0.014sec/12.484sec]
 
 #### Procjena modela
 
@@ -353,16 +353,16 @@ as.data.frame(Reduce("+", cf_matrix_model) / length(cf_matrix_model)) %>%
 ```
 
     ##     n   precision      recall         TPR        FPR
-    ## 1   1 0.009230769 0.009230769 0.009230769 0.01085398
-    ## 2   2 0.009230769 0.018461538 0.018461538 0.02170791
-    ## 3   3 0.009411765 0.028235294 0.028235294 0.03255581
-    ## 4   4 0.010135747 0.040542986 0.040542986 0.04337615
-    ## 5   5 0.010533937 0.052669683 0.052669683 0.05419842
-    ## 6   6 0.010588235 0.063529412 0.063529412 0.06503456
-    ## 7   7 0.010290886 0.072036199 0.072036199 0.07589648
-    ## 8   8 0.010542986 0.084343891 0.084343891 0.08671684
-    ## 9   9 0.010537959 0.094841629 0.094841629 0.09755718
-    ## 10 10 0.010280543 0.102805430 0.102805430 0.10842503
+    ## 1   1 0.007420814 0.007420814 0.007420814 0.01087366
+    ## 2   2 0.010045249 0.020090498 0.020090498 0.02168982
+    ## 3   3 0.010196078 0.030588235 0.030588235 0.03253003
+    ## 4   4 0.010045249 0.040180995 0.040180995 0.04337971
+    ## 5   5 0.010063348 0.050316742 0.050316742 0.05422393
+    ## 6   6 0.009894419 0.059366516 0.059366516 0.06508023
+    ## 7   7 0.010239173 0.071674208 0.071674208 0.07590066
+    ## 8   8 0.010316742 0.082533937 0.082533937 0.08673705
+    ## 9   9 0.010477627 0.094298643 0.094298643 0.09756352
+    ## 10 10 0.010533937 0.105339367 0.105339367 0.10839803
 
 Prethodne korake pretvorit ćemo u funkciju i primijenit ju na sve elemente u listi. Zatim koristimo funkciju `map()` za iteraciju funkcije kroz sve modele te `enframe()` i `unnest()` za dobivanje rezultata u jednoj razini kako bismo mogli usporediti modele.
 
@@ -388,16 +388,16 @@ results_tbl
     ## # A tibble: 50 × 6
     ##    name             n precision  recall     TPR    FPR
     ##    <chr>        <dbl>     <dbl>   <dbl>   <dbl>  <dbl>
-    ##  1 random items     1   0.00923 0.00923 0.00923 0.0109
-    ##  2 random items     2   0.00923 0.0185  0.0185  0.0217
-    ##  3 random items     3   0.00941 0.0282  0.0282  0.0326
-    ##  4 random items     4   0.0101  0.0405  0.0405  0.0434
-    ##  5 random items     5   0.0105  0.0527  0.0527  0.0542
-    ##  6 random items     6   0.0106  0.0635  0.0635  0.0650
-    ##  7 random items     7   0.0103  0.0720  0.0720  0.0759
-    ##  8 random items     8   0.0105  0.0843  0.0843  0.0867
-    ##  9 random items     9   0.0105  0.0948  0.0948  0.0976
-    ## 10 random items    10   0.0103  0.103   0.103   0.108 
+    ##  1 random items     1   0.00742 0.00742 0.00742 0.0109
+    ##  2 random items     2   0.0100  0.0201  0.0201  0.0217
+    ##  3 random items     3   0.0102  0.0306  0.0306  0.0325
+    ##  4 random items     4   0.0100  0.0402  0.0402  0.0434
+    ##  5 random items     5   0.0101  0.0503  0.0503  0.0542
+    ##  6 random items     6   0.00989 0.0594  0.0594  0.0651
+    ##  7 random items     7   0.0102  0.0717  0.0717  0.0759
+    ##  8 random items     8   0.0103  0.0825  0.0825  0.0867
+    ##  9 random items     9   0.0105  0.0943  0.0943  0.0976
+    ## 10 random items    10   0.0105  0.105   0.105   0.108 
     ## # … with 40 more rows
 
 #### Vizualizacija performansi modela

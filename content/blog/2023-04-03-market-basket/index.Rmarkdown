@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r pressure, echo=FALSE}
-knitr::include_graphics("img/img1.jpg")
+knitr::include_graphics("img/recommender_lab.svg")
 ```
 
 
