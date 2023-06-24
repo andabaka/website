@@ -6,7 +6,7 @@ slug: []
 categories: []
 tags: []
 draft: false
-excerpt: "Analiza potrošačke košarice na primjeru izvršenih online transakcija jedne pekarnice u Engleskoj "
+excerpt: "Machine learning i sustav preporuka. Collaborative filtering, Association Rules i Item Popularity algoritmi u primjeni analize potrošačke košarice. "
 ---
 
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
@@ -23,9 +23,7 @@ excerpt: "Analiza potrošačke košarice na primjeru izvršenih online transakci
 
 ## UVOD
 
-Veliki kao i mali poduzetnici uvijek traže načine za povećanje svoje dobiti. Kako bi to učinili mnogi koriste tehniku koja se zove analiza potrošačke košarice.
-
-Analiza potrošačke košarice (engl. ***Market Basket Analysis***, *Affinity Analysis*) je proces razumijevanja obrasca ponašanja kupaca pri kupnji i povezanosti između različitih artikala. Cilj je pronaći artikle koji se pojavljuju zajedno u transakcijama što omogućuje primjenu ciljnih strategija poput raspodjele artikala unutar trgovina, davanje popusta na artikle koji se često prodaju zajedno te kreiranja preporuka proizvoda s ciljem privlačenja kupaca i povećanja potrošnje. Postoji nekoliko metoda analize potrošačke košarice[^1]:
+Analiza potrošačke košarice (engl. ***Market Basket Analysis***, *Affinity Analysis*) je proces razumijevanja obrasca ponašanja pri kupnji i povezanosti između različitih artikala. Cilj je pronaći artikle koji se pojavljuju zajedno u transakcijama što omogućuje primjenu ciljnih strategija poput raspodjele artikala unutar trgovina, davanje popusta na artikle koji se često prodaju zajedno te kreiranja preporuka proizvoda s ciljem privlačenja kupaca i povećanja potrošnje. Postoji nekoliko metoda analize potrošačke košarice[^1]:
 
 - **Kolaborativno filtriranje** (engl. *Collaborative Filtering*)
 - **Pravila pridruživanja** (engl. *Association Rules*)
@@ -289,35 +287,35 @@ results <- recommenderlab::evaluate(
 ```
 
     ## RANDOM run fold/sample [model time/prediction time]
-    ## 	 1  [0.01sec/0.168sec] 
-    ## 	 2  [0.001sec/0.147sec] 
-    ## 	 3  [0sec/0.114sec] 
-    ## 	 4  [0.001sec/0.141sec] 
-    ## 	 5  [0sec/0.137sec] 
+    ## 	 1  [0.006sec/0.143sec] 
+    ## 	 2  [0sec/0.134sec] 
+    ## 	 3  [0sec/0.104sec] 
+    ## 	 4  [0.001sec/0.116sec] 
+    ## 	 5  [0sec/0.103sec] 
     ## POPULAR run fold/sample [model time/prediction time]
-    ## 	 1  [0.002sec/0.26sec] 
-    ## 	 2  [0.002sec/0.221sec] 
-    ## 	 3  [0.001sec/0.246sec] 
-    ## 	 4  [0.001sec/0.242sec] 
-    ## 	 5  [0.001sec/0.239sec] 
+    ## 	 1  [0.002sec/0.217sec] 
+    ## 	 2  [0.001sec/0.196sec] 
+    ## 	 3  [0.002sec/0.215sec] 
+    ## 	 4  [0.001sec/0.193sec] 
+    ## 	 5  [0.001sec/0.21sec] 
     ## UBCF run fold/sample [model time/prediction time]
-    ## 	 1  [0.001sec/5.385sec] 
-    ## 	 2  [0.001sec/5.95sec] 
-    ## 	 3  [0.001sec/6.022sec] 
-    ## 	 4  [0.001sec/4.999sec] 
-    ## 	 5  [0.001sec/5.105sec] 
+    ## 	 1  [0.001sec/4.628sec] 
+    ## 	 2  [0.001sec/4.299sec] 
+    ## 	 3  [0.001sec/4.398sec] 
+    ## 	 4  [0.001sec/4.475sec] 
+    ## 	 5  [0.001sec/4.59sec] 
     ## IBCF run fold/sample [model time/prediction time]
-    ## 	 1  [0.092sec/0.088sec] 
-    ## 	 2  [0.094sec/0.077sec] 
-    ## 	 3  [0.108sec/0.085sec] 
-    ## 	 4  [0.092sec/0.079sec] 
-    ## 	 5  [0.094sec/0.098sec] 
+    ## 	 1  [0.094sec/0.076sec] 
+    ## 	 2  [0.099sec/0.082sec] 
+    ## 	 3  [0.089sec/0.073sec] 
+    ## 	 4  [0.094sec/0.071sec] 
+    ## 	 5  [0.096sec/0.073sec] 
     ## AR run fold/sample [model time/prediction time]
-    ## 	 1  [0.045sec/9sec] 
-    ## 	 2  [0.02sec/8.946sec] 
-    ## 	 3  [0.023sec/9.106sec] 
-    ## 	 4  [0.015sec/8.631sec] 
-    ## 	 5  [0.011sec/8.911sec]
+    ## 	 1  [0.03sec/8.982sec] 
+    ## 	 2  [0.021sec/9.052sec] 
+    ## 	 3  [0.012sec/9.786sec] 
+    ## 	 4  [0.017sec/11.05sec] 
+    ## 	 5  [0.013sec/10.431sec]
 
 #### Procjena modela
 
@@ -355,16 +353,16 @@ as.data.frame(Reduce("+", cf_matrix_model) / length(cf_matrix_model)) %>%
 ```
 
     ##     n   precision      recall         TPR        FPR
-    ## 1   1 0.007782805 0.007782805 0.007782805 0.01087005
-    ## 2   2 0.009954751 0.019909502 0.019909502 0.02169269
-    ## 3   3 0.010678733 0.032036199 0.032036199 0.03251502
-    ## 4   4 0.010723982 0.042895928 0.042895928 0.04335121
-    ## 5   5 0.010570136 0.052850679 0.052850679 0.05419762
-    ## 6   6 0.010437406 0.062624434 0.062624434 0.06504576
-    ## 7   7 0.010627020 0.074389140 0.074389140 0.07587207
-    ## 8   8 0.010339367 0.082714932 0.082714932 0.08673594
-    ## 9   9 0.010216189 0.091945701 0.091945701 0.09758953
-    ## 10 10 0.010226244 0.102262443 0.102262443 0.10843151
+    ## 1   1 0.009230769 0.009230769 0.009230769 0.01085398
+    ## 2   2 0.009230769 0.018461538 0.018461538 0.02170791
+    ## 3   3 0.009411765 0.028235294 0.028235294 0.03255581
+    ## 4   4 0.010135747 0.040542986 0.040542986 0.04337615
+    ## 5   5 0.010533937 0.052669683 0.052669683 0.05419842
+    ## 6   6 0.010588235 0.063529412 0.063529412 0.06503456
+    ## 7   7 0.010290886 0.072036199 0.072036199 0.07589648
+    ## 8   8 0.010542986 0.084343891 0.084343891 0.08671684
+    ## 9   9 0.010537959 0.094841629 0.094841629 0.09755718
+    ## 10 10 0.010280543 0.102805430 0.102805430 0.10842503
 
 Prethodne korake pretvorit ćemo u funkciju i primijenit ju na sve elemente u listi. Zatim koristimo funkciju `map()` za iteraciju funkcije kroz sve modele te `enframe()` i `unnest()` za dobivanje rezultata u jednoj razini kako bismo mogli usporediti modele.
 
@@ -390,16 +388,16 @@ results_tbl
     ## # A tibble: 50 × 6
     ##    name             n precision  recall     TPR    FPR
     ##    <chr>        <dbl>     <dbl>   <dbl>   <dbl>  <dbl>
-    ##  1 random items     1   0.00778 0.00778 0.00778 0.0109
-    ##  2 random items     2   0.00995 0.0199  0.0199  0.0217
-    ##  3 random items     3   0.0107  0.0320  0.0320  0.0325
-    ##  4 random items     4   0.0107  0.0429  0.0429  0.0434
-    ##  5 random items     5   0.0106  0.0529  0.0529  0.0542
-    ##  6 random items     6   0.0104  0.0626  0.0626  0.0650
-    ##  7 random items     7   0.0106  0.0744  0.0744  0.0759
-    ##  8 random items     8   0.0103  0.0827  0.0827  0.0867
-    ##  9 random items     9   0.0102  0.0919  0.0919  0.0976
-    ## 10 random items    10   0.0102  0.102   0.102   0.108 
+    ##  1 random items     1   0.00923 0.00923 0.00923 0.0109
+    ##  2 random items     2   0.00923 0.0185  0.0185  0.0217
+    ##  3 random items     3   0.00941 0.0282  0.0282  0.0326
+    ##  4 random items     4   0.0101  0.0405  0.0405  0.0434
+    ##  5 random items     5   0.0105  0.0527  0.0527  0.0542
+    ##  6 random items     6   0.0106  0.0635  0.0635  0.0650
+    ##  7 random items     7   0.0103  0.0720  0.0720  0.0759
+    ##  8 random items     8   0.0105  0.0843  0.0843  0.0867
+    ##  9 random items     9   0.0105  0.0948  0.0948  0.0976
+    ## 10 random items    10   0.0103  0.103   0.103   0.108 
     ## # … with 40 more rows
 
 #### Vizualizacija performansi modela

@@ -6,7 +6,7 @@ slug: []
 categories: []
 tags: []
 draft: false
-excerpt: "Analiza potrošačke košarice na primjeru izvršenih online transakcija jedne pekarnice u Engleskoj "
+excerpt: "Machine learning i sustav preporuka. Collaborative filtering, Association Rules i Item Popularity algoritmi u primjeni analize potrošačke košarice. "
 ---
 
 
@@ -25,9 +25,7 @@ knitr::include_graphics("img/img1.jpg")
 
 ## UVOD  
 
-Veliki kao i mali poduzetnici uvijek traže načine za povećanje svoje dobiti. Kako bi to učinili mnogi koriste tehniku koja se zove analiza potrošačke košarice. 
-
-Analiza potrošačke košarice (engl. __*Market Basket Analysis*__, *Affinity Analysis*) je proces razumijevanja obrasca ponašanja kupaca pri kupnji i povezanosti između različitih artikala. Cilj je pronaći artikle koji se pojavljuju zajedno u transakcijama što omogućuje primjenu ciljnih strategija poput raspodjele artikala unutar trgovina, davanje popusta na artikle koji se često prodaju zajedno te kreiranja preporuka proizvoda s ciljem privlačenja kupaca i povećanja potrošnje. Postoji nekoliko metoda analize potrošačke košarice^[https://university.business-science.io/courses/]:
+Analiza potrošačke košarice (engl. __*Market Basket Analysis*__, *Affinity Analysis*) je proces razumijevanja obrasca ponašanja pri kupnji i povezanosti između različitih artikala. Cilj je pronaći artikle koji se pojavljuju zajedno u transakcijama što omogućuje primjenu ciljnih strategija poput raspodjele artikala unutar trgovina, davanje popusta na artikle koji se često prodaju zajedno te kreiranja preporuka proizvoda s ciljem privlačenja kupaca i povećanja potrošnje. Postoji nekoliko metoda analize potrošačke košarice^[https://university.business-science.io/courses/]:
 
 - __Kolaborativno filtriranje__ (engl. *Collaborative Filtering*)
 - __Pravila pridruživanja__ (engl. *Association Rules*)
