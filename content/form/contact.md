@@ -1,16 +1,14 @@
 ---
 date: "2019-02-25T13:38:41-06:00"
-description: This template has a **contact-us** form built right in. All you need
-  to do is add a valid recipient form-id to the front matter of this form page and
-  you're ready to receive submissions.
+description: Ukoliko me želite kontaktirati, pošaljite poruku sa e-mail adresom i javit ću Vam se u najkraćem mogućem roku. 
 draft: false
 formspree_form_id: mwkjbqwz
 layout: split-right
-name: Contact Us Form
+name: Kontakt
 show_poweredby_formspree: true
 show_social_links: true
 submit_button_label: Send Message
-title: Contact
+title: Kontakt
 type: form
 url: contact
 ---
