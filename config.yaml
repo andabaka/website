@@ -36,7 +36,7 @@ params:
   description: A modern, beautiful, and easily configurable blog theme for Hugo.
   favicon: /img/bar-chart.png
   headingFontFamily: Fraunces
-  logo: /img/bar-chart.png
+  logo: /img/andabaka.png
   mainSections:
     - blog
     - project
